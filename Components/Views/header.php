@@ -5,7 +5,10 @@
         echo 'class="active"'; ?> href="/fiscal_fantasy/login.php">Connexion</a>
     <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/signup.php')
         echo 'class="active"'; ?> href="/fiscal_fantasy/signup.php">Inscription</a>
+    <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/logout.php')
+        echo 'class="active"'; ?> href="/fiscal_fantasy/logout.php">Déconnexion</a>
 </div>
+<br><br>
 <style>
     .topnav {
         background-color: #333;
