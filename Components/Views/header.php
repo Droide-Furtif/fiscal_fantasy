@@ -1,11 +1,10 @@
 <div class="topnav">
-    <a <?php if ($_SERVER['REQUEST_URI'] == '/')
-        echo 'class="active"'; ?> href="/">Accueil</a>
-    <a <?php if ($_SERVER['REQUEST_URI'] == '/login.php')
-        echo 'class="active"'; ?> href="login.php">Connexion</a>
-    <a <?php if ($_SERVER['REQUEST_URI'] == '/subscribe.php')
-        echo 'class="active"'; ?>
-        href="subscribe.php">Inscription</a>
+    <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/')
+        echo 'class="active"'; ?> href="/fiscal_fantasy/index.php">Accueil</a>
+    <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/login.php')
+        echo 'class="active"'; ?> href="/fiscal_fantasy/login.php">Connexion</a>
+    <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/signup.php')
+        echo 'class="active"'; ?> href="/fiscal_fantasy/signup.php">Inscription</a>
 </div>
 <style>
     .topnav {
