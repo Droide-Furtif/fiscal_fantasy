@@ -1,14 +1,13 @@
 <div class="topnav">
-    <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/index.php')
+    <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/index.php' || $_SERVER['REQUEST_URI'] == '/fiscal_fantasy/dashboard.php')
         echo 'class="active"'; ?> href="/fiscal_fantasy/index.php">Accueil</a>
     <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/login.php')
         echo 'class="active"'; ?> href="/fiscal_fantasy/login.php">Connexion</a>
     <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/signup.php')
         echo 'class="active"'; ?> href="/fiscal_fantasy/signup.php">Inscription</a>
-    <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/logout.php')
-        echo 'class="active"'; ?> href="/fiscal_fantasy/logout.php">Déconnexion</a>
+    <a href="/fiscal_fantasy/Components/Controllers/logout.php">Déconnexion</a>
 </div>
-<br><br>
+<br>
 <style>
     .topnav {
         background-color: #333;
