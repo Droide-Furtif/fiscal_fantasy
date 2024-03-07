@@ -1,0 +1,42 @@
+<?php
+include(__DIR__ . "/../Models/compte.php");
+include(__DIR__ . "/../Models/user.php");
+include(__DIR__ . "/../Models/db_connection.php");
+include(__DIR__ . "/../Controllers/convert.php");
+
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+
+if (!isset($_SESSION['user_id'])) {
+  header("Location: login.php");
+  exit;
+}
+
+$db = connection();
+$user = getUser($db, $_SESSION['user_email']);
+
+if (isset($_POST['accName'], $_POST['accType'], $_POST['devise'])) {
+  
+  $accName = $_POST['accName'];
+  $accType = $_POST['accType'];
+  $devise = $_POST['devise'];
+
+  registerAccount($db, $user, $accName, $accType, $devise);
+}
+$accounts = getUserAccounts($db, $user);
+echo '<div style="display: flex; flex-wrap: wrap; gap: 80px;">';
+foreach($accounts as $account) {
+  echo("<div>
+    <h3>" . $account['name'] . "</h3>
+    <p>Type: " . convertTypeCodeToString($account['type']) . "</p>
+    <p>Capital: " . convertCurrencyCodeToSymbol($account['devise']) . " " . $account['capital'] . "</p>
+    <form action='Components/Models/delete_account.php' method='POST'>
+      <input type='hidden' name='account_id' value='" . $account['id'] . "'>
+      <button type='submit' name='delete'>Supprimer</button>
+    </form>
+  </div>");
+}
+echo("</div>");
+
+?>
