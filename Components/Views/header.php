@@ -12,6 +12,7 @@
         <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/signup.php') echo 'class="active"'; ?> href="/fiscal_fantasy/signup.php">Inscription</a>
     <?php endif; ?>
     <?php if (isset($_SESSION['user_id'])): ?> 
+      <a href='/fiscal_fantasy/portfolios.php'>Comptes</a>
       <a href='/fiscal_fantasy/Components/Controllers/logout.php'>Déconnexion</a>
     <?php endif; ?>
 </div>

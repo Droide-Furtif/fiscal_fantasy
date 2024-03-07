@@ -1,5 +1,6 @@
 <html>
-<head><title>Log-in</title></head>
+<head><title>Log-in</title>
+</head>
 <body>
   <form method="post" action="">
     <input type="email" name="email" required></input>
