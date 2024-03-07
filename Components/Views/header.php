@@ -1,5 +1,5 @@
 <div class="topnav">
-    <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/')
+    <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/index.php')
         echo 'class="active"'; ?> href="/fiscal_fantasy/index.php">Accueil</a>
     <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/login.php')
         echo 'class="active"'; ?> href="/fiscal_fantasy/login.php">Connexion</a>
