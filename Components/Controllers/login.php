@@ -1,7 +1,10 @@
 <?php
 include(__DIR__ . "/../Models/user.php");
 include(__DIR__ . "/../Models/db_connection.php");
-session_start();
+
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 
 // Si user déjà connecté, on le redirige vers le dashboard
 if (isset($_SESSION['user_id'])) {
