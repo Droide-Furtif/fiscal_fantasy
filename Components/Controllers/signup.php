@@ -1,5 +1,5 @@
 <?php  
-include(__DIR__ . "../Models/user.php");
+include(__DIR__ . "/../Models/user.php");
 include(__DIR__ . "/../Models/db_connection.php");
 
     if (isset($_POST['email'], $_POST['password'], $_POST['confirm-password'], $_POST['username'])) {
@@ -12,7 +12,7 @@ include(__DIR__ . "/../Models/db_connection.php");
       $confirmPassword = $_POST['confirm-password'];
       $username = mysqli_real_escape_string($conn, $_POST['username']);
   
-      // Vérification du mot de passe entré 
+      // Vérification du mot de passe
       $errors = [];
       if (!preg_match('/\d/', $password)) {
         $errors[] = "Le mot de passe doit contenir au moins un chiffre.";
