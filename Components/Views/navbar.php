@@ -17,14 +17,14 @@
                     <!-- navbar -->
                     <div class="col-2" id="navbarVertical" >
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                         <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/index.php' || $_SERVER['REQUEST_URI'] == '/fiscal_fantasy/dashboard.php')
-                            echo 'class="active"' ?>class="nav-link" id="v-pills-Accueil-tab" data-toggle="pill" href="/fiscal_fantasy/dashboard.php" role="tab" aria-controls="v-pills-Accueil" aria-selected="true">Accueil</a>
                             <?php if (!isset($_SESSION['user_id'])): ?>
+                            <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/accueilUnlogged.php') echo 'class="active"' ?>class="nav-link" id="v-pills-Accueil-tab" data-toggle="pill" href="/fiscal_fantasy/accueilUnlogged.php" role="tab" aria-controls="v-pills-Accueil" aria-selected="true">Accueil</a>
                             <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/login.php') echo 'class="active"'; ?>class="nav-link" id="v-pills-Accueil-tab" data-toggle="pill" href="/fiscal_fantasy/login.php" role="tab" aria-controls="v-pills-messages" aria-selected="false">Connexion</a>
                             <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/signup.php') echo 'class="active"'; ?>class="nav-link" id="v-pills-Accueil-tab" data-toggle="pill" href="/fiscal_fantasy/signup.php" role="tab" aria-controls="v-pills-messages" aria-selected="false">Inscription</a>
                             <?php endif; ?>
 
                             <?php if (isset($_SESSION['user_id'])): ?> 
+                            <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/dashboard.php') echo 'class="active"' ?>class="nav-link" id="v-pills-Accueil-tab" data-toggle="pill" href="/fiscal_fantasy/dashboard.php" role="tab" aria-controls="v-pills-Accueil" aria-selected="true">Accueil</a>
                             <a class="nav-link" id="v-pills-Porte-feuille-tab" data-toggle="pill" href='/fiscal_fantasy/portfolios.php' role="tab" aria-controls="v-pills-messages" aria-selected="false">Comptes</a>
                             <a class="nav-link" id="v-pills-Porte-feuille-tab" data-toggle="pill" href='/fiscal_fantasy/portfolios.php' role="tab" aria-controls="v-pills-messages" aria-selected="false">Groupes</a>
                             <a class="nav-link" id="v-pills-Porte-feuille-tab" data-toggle="pill" href='/fiscal_fantasy/Components/Controllers/logout.php' role="tab" aria-controls="v-pills-messages" aria-selected="false">Déconnexion</a>
@@ -48,8 +48,8 @@
                                 $currentPage = isset($currentPage) ? $currentPage : '';
 
                                 $pages = [
+                                    'accueilUnlogged' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/accueilUnlogged.php",
                                     'dashboard' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/dashboard.php",
-                                    'accueil' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/dashboard.php",
                                     'login' =>  "C:/xampp/htdocs/fiscal_fantasy/Components/Views/login.php",
                                     'signup' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/signup.php",
                                     'portfolios' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/portefolio.php"
