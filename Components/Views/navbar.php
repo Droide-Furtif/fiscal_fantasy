@@ -52,7 +52,7 @@
                                     'dashboard' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/dashboard.php",
                                     'login' =>  "C:/xampp/htdocs/fiscal_fantasy/Components/Views/login.php",
                                     'signup' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/signup.php",
-                                    'portfolios' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/portefolio.php"
+                                    'portfolios' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/portfolios.php"
                                 ];
 
                                 if (array_key_exists($currentPage, $pages)){

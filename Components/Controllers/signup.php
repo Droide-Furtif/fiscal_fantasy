@@ -52,7 +52,8 @@ include(__DIR__ . "/../Models/db_connection.php");
             // Si tout va bien, on ajoute l'user à la database
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             registerUser($conn, $email, $hashedPassword, $username);
-            header('Location: login.php');
+            // header('Location: login.php');
+            echo '<meta http-equiv="refresh" content="0;url=dashboard.php">';
           }
         }
       }

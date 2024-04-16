@@ -8,7 +8,8 @@ if (session_status() == PHP_SESSION_NONE) {
 
 // Si user déjà connecté, on le redirige vers le dashboard
 if (isset($_SESSION['user_id'])) {
-  header("Location: dashboard.php");
+  // header("Location: dashboard.php");
+  echo '<meta http-equiv="refresh" content="0;url=dashboard.php">';
   exit();
 }
 
@@ -26,7 +27,8 @@ if (isset($_POST['email'], $_POST['password'])) {
     // Si le mdp est bon on stock l'user dans la session et on redirige vers le dashboard
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['user_email'] = $user['email'];
-    header("Location: dashboard.php");
+    // header("Location: dashboard.php");
+    echo '<meta http-equiv="refresh" content="0;url=dashboard.php">';
     exit();
   } else {
     echo "Email ou mot de passe incorrect.";
