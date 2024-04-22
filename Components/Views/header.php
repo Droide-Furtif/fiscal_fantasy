@@ -1,7 +1,9 @@
 <?php 
+    include 'modalHeader.php';
   if (session_status() == PHP_SESSION_NONE) {
     session_start();
   }
+    
 ?>
 <html>    
     <head>
@@ -12,37 +14,58 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Hind+Siliguri:wght@300;400;500;600;700&family=Italianno&display=swap" rel="stylesheet">
         <title>Fiscal Fantasy</title>
-    </head>
-    <body>
-        <!-- la partie pour acceder au profil et aux paramètres - le header-  -->
-        <section >
-            <header >
-                <a href="#" class="totalHeader">
-                    <div class="containerImage">
-                        <?php 
-                            $URLphotoDeProfil = "https://i.pinimg.com/236x/93/d4/2e/93d42e90b085e14f98bbca41c6ba43b4.jpg";
-                            echo "<img class='photoDeProfil'  src='$URLphotoDeProfil'>" ;
-                        ?>
-                    </div>
-                </a>
-                <!-- texte pour souhaiter la bienvenue a l'utilisateur -->
-                <div class="texteHeader">
-                    <?php
-                        $user = "Lisa, Majd et Mathis";
-                        echo "<h1>Bonjour, $user !</h1>";
-                    ?>
-                </div>
-                <!-- icon pour ouvrir les paramètre faire une modal -->
-                <div class="iconHeader">
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-                        </svg>
-                    </a>
-                </div> 
-            </header>
-        </section>
+        </head>
+<body>
 
+<section>
+    <header>
+        <a href="#" class="totalHeader" id="openModal">
+            <div class="containerImage">
+                <?php 
+                    $URLphotoDeProfil = "https://i.pinimg.com/236x/93/d4/2e/93d42e90b085e14f98bbca41c6ba43b4.jpg";
+                    echo "<img class='photoDeProfil' src='$URLphotoDeProfil' alt='Photo de profil'>";
+                ?>
+            </div>
+        </a>
+        <!-- texte pour souhaiter la bienvenue a l'utilisateur -->
+        <div class="texteHeader">
+            <?php
+                $user = "Lisa, Majd et Mathis";
+                echo "<h1>Bonjour, $user !</h1>";
+            ?>
+        </div>
+        <!-- icon pour ouvrir les paramètre faire une modal -->
+        <div class="iconHeader">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                </svg>
+            </a>
+        </div> 
+    </header>
+</section>
+</body>
+</html>
+<script>
+    // JavaScript pour afficher la modale et assombrir l'arrière-plan
+    var modal = document.getElementById('myModal');
+    var openModal = document.getElementById('openModal');
+    var span = document.getElementsByClassName('close')[0];
+
+    openModal.onclick = function() {
+        modal.style.display = 'block';
+    }
+
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
 
 <br>
 <style>
@@ -135,4 +158,5 @@
                 text-decoration: none;
                 transform: scale(1.2);
             }
+    
 </style>
