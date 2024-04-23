@@ -18,6 +18,8 @@
   </form>
 </body>
 </html>
-<?php  
+<?php
 include(__DIR__ . "/../Controllers/signup.php");
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 ?>

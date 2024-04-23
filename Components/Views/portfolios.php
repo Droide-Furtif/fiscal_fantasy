@@ -1,5 +1,5 @@
 <?php
-  include "Components/Controllers/portfolios.php";
+include(__DIR__ . "/../Controllers/portfolios.php");
 ?>
 <html>
 <head>
@@ -37,9 +37,9 @@
       <select name="devise" required>
         <option value="1">€</option>
         <option value="2">$</option>
-        <option value="3">£</option> 
+        <option value="3">£</option>
       </select>
-      <label name="devise">Devise</label>     
+      <label name="devise">Devise</label>
       <br>
       <input type="submit" required></input>
       </form>

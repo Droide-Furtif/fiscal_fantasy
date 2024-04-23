@@ -1,17 +1,19 @@
-<?php  
+<?php
 include(__DIR__ . "/../Models/user.php");
 include(__DIR__ . "/../Models/db_connection.php");
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+echo "<p>Controller</p>";
     if (isset($_POST['email'], $_POST['password'], $_POST['confirm-password'], $_POST['username'])) {
 
       $conn = connection();
       initTable($conn);
-  
+
       $email = mysqli_real_escape_string($conn, $_POST['email']);
       $password = $_POST['password'];
       $confirmPassword = $_POST['confirm-password'];
       $username = mysqli_real_escape_string($conn, $_POST['username']);
-  
+
       // Vérification du mot de passe
       $errors = [];
       if (!preg_match('/\d/', $password)) {
@@ -26,11 +28,11 @@ include(__DIR__ . "/../Models/db_connection.php");
       if (!(strlen($password) >= 7)) {
         $errors[] = "Le mot de passe doit contenir au moins 7 caractères";
       }
-  
+
       if ($password !== $confirmPassword) {
         $errors[] = "Les mots de passe ne correspondent pas.";
       }
-  
+
       if (!empty($errors)) {
         foreach ($errors as $error) {
           echo $error . "<br>";
@@ -38,14 +40,14 @@ include(__DIR__ . "/../Models/db_connection.php");
       } else {
         // on vérifie si l'email est déjà utilisé
         $mailExists = findInstances($conn, 'email', $email);
-  
+
         if ($mailExists) {
           echo "L'email est déjà utilisé. Veuillez en choisir un autre.";
-  
+
         } else {
           // on vérifie si l'username est déjà utilisé
           $usernameExists = findInstances($conn, 'name', $username);
-  
+
           if ($usernameExists) {
             echo "Le nom d'utilisateur est déjà utilisé. Veuillez en choisir un autre."; 
           } else {
