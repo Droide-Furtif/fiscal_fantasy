@@ -5,7 +5,10 @@
 </head>
 <body>
     <form action="" method="post">
-        <label for="table">Choisissez une table:</label>
+        <p class="line"></p>
+        <h1 class="Admin">Administration</h1>
+        <p class="line"></p>
+        <label class="intTable" for="table">Choisissez une table:</label>
 <!-- /!\ Les 'value' des options, dans l'html comme le js, DOIVENT correspondrent au nom du champ/table dans la bdd -->
         <select id="table" name="table" onchange="updateFields()">
             <option value="user">User</option>
@@ -13,12 +16,12 @@
             <option value="transaction">Transaction</option>
         </select>
 
-        <label for="field">Choisissez un champ:</label>
+        <label class="intField" for="field">Choisissez un champ:</label>
         <select id="field" name="field">
             <!-- Les options seront ajoutées ici par JS -->
         </select>
 
-        <label for="filter">Filtre (facultatif):</label>
+        <label class="intFilter" for="filter">Filtre (facultatif):</label>
         <input type="text" id="filter" name="filter">
 
         <input type="submit" value="Rechercher">
@@ -51,6 +54,35 @@
     </script>
 </body>
 </html>
+<style>
+    .Admin{
+        display:flex;
+        justify-content:center;
+        text-align:center;
+        color: #40852F;
+    }
+    #filter{
+        border: 2px solid #40852F;
+        border-radius: 10px;
+    }
+    #field{
+        border: 2px solid #40852F;
+        border-radius: 10px;
+    }
+    #table{
+        border: 2px solid #40852F;
+        border-radius: 10px;
+    }
+    .intTable{
+
+    }
+    .intField{
+        padding-left: 50px;
+    }
+    .intFilter{
+        padding-left: 50px;
+    }
+</style>
 <?php
 include(__DIR__ . "/../Controllers/admin.php");
 ?>

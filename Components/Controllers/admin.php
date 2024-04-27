@@ -1,6 +1,4 @@
 <?php
-include(__DIR__ . "/../Models/user.php");
-include(__DIR__ . "/../Models/db_connection.php");
 include(__DIR__ . "/../Controllers/convert.php");
 
 if (session_status() == PHP_SESSION_NONE) {
@@ -45,26 +43,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     if ($result->num_rows > 0) {
-      // Construction du tableau HTML pour afficher les résultats
-        $fields = explode(", ", $columns);
-        
-        echo "<table border='1'><tr>";
-        foreach ($fields as $fieldName) {
-            echo "<th>" . htmlspecialchars(trim($fieldName, "`")) . "</th>";
-        }
-        echo "</tr>";
-
-        while($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            foreach ($fields as $fieldName) {
-                echo "<td>" . htmlspecialchars($row[trim($fieldName, "`")]) . "</td>";
-            }
-            echo "</tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "Aucun résultat trouvé.";
-    }
+        // Construction du tableau HTML pour afficher les résultats
+          $fields = explode(", ", $columns);
+          
+          echo "<table border='1' style='border-radius: 50px; border-color: #40852F; border-collapse: collapse;'>";
+          echo "<tr style='background-color: #fff; color: #40852F; font-family: Arial, sans-serif;'>";
+          foreach ($fields as $fieldName) {
+              echo "<th style='padding: 10px;'>" . htmlspecialchars(trim($fieldName, "`")) . "</th>";
+          }
+          echo "</tr>";
+  
+          while($row = $result->fetch_assoc()) {
+              echo "<tr style='background-color: #fff; color: #000; font-family: Arial, sans-serif;'>";
+              foreach ($fields as $fieldName) {
+                  echo "<td style='padding: 10px;'>" . htmlspecialchars($row[trim($fieldName, "`")]) . "</td>";
+              }
+              echo "</tr>";
+          }
+          echo "</table>";
+      } else {
+          echo "Aucun résultat trouvé.";
+      }
 
     $stmt->close();
     $db->close();
