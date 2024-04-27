@@ -2,7 +2,6 @@
     session_start();
     include(__DIR__ . "/../Models/user.php");
     include(__DIR__ . "/../Models/db_connection.php");
-    include(__DIR__ . "/modalSettings.php"); 
     $db = connection();
     if (isset($_SESSION['user_email'])) {
     $user = getUser($db, $_SESSION['user_email']);}
@@ -69,8 +68,8 @@
             <div id="settingsModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <!-- Contenu de votre modal de paramètres -->
                     <p>Settings à venir..</p>
+                    <a href="admin.php">Accéder au panel administrateur</a>
                 </div>
             </div>
         <?php endif ?>
