@@ -1,6 +1,4 @@
 <?php
-include(__DIR__ . "/../Models/user.php");
-include(__DIR__ . "/../Models/db_connection.php");
 
 if (session_status() == PHP_SESSION_NONE) {
   session_start();

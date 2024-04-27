@@ -30,13 +30,15 @@
                             <a class="nav-link" id="v-pills-Porte-feuille-tab" data-toggle="pill" href='/fiscal_fantasy/Components/Controllers/logout.php' role="tab" aria-controls="v-pills-messages" aria-selected="false">Déconnexion</a>
                             <?php endif; ?>
                         </div>
-                        
+
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-Accueil" role="tabpanel" aria-labelledby="v-pills-Accueil-tab">...</div>
                             <div class="tab-pane fade" id="v-pills-Porte-feuille" role="tabpanel" aria-labelledby="v-pills-Porte-feuille-tab">...</div>
                             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
                             <div class="tab-pane fade" id="v-pills-Paramètre" role="tabpanel" aria-labelledby="v-pills-Paramètre-tab">...</div>
-                        </div>q
+                        </div>
+                        
+                        
                     </div>
                     
                 </div>
@@ -76,7 +78,6 @@
     /* balises */
 
         body{
-            overflow: hidden;
             font-family: Hind Siliguri;
         }
 
@@ -245,12 +246,8 @@
 
 
 </style>
-=======
 <?php
   include(__DIR__ . "/../Controllers/landing.php");
 ?>
-<html>
-  <h1>Accueil</h1>
-  <h2>Super Xpense Fiscal Fantasy Smart Savings Buddy Craftpocket Explosive Corp Airlines</h2>
-</html>
+
 
