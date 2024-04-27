@@ -1,6 +1,4 @@
 <?php  
-include(__DIR__ . "/../Models/user.php");
-include(__DIR__ . "/../Models/db_connection.php");
 
     if (isset($_POST['email'], $_POST['password'], $_POST['confirm-password'], $_POST['username'])) {
 
