@@ -1,7 +1,5 @@
 <?php
 include(__DIR__ . "/../Models/compte.php");
-include(__DIR__ . "/../Models/user.php");
-include(__DIR__ . "/../Models/db_connection.php");
 include(__DIR__ . "/../Controllers/convert.php");
 
 # Messages d'erreurs activés, à enlever à la fin
