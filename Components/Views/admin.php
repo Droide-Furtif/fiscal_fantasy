@@ -5,6 +5,7 @@
 </head>
 <body>
     <form action="" method="post">
+        <input type="hidden" name="action" value="search">
         <label for="table">Choisissez une table:</label>
 <!-- /!\ Les 'value' des options, dans l'html comme le js, DOIVENT correspondrent au nom du champ/table dans la bdd -->
         <select id="table" name="table" onchange="updateFields()">
@@ -49,6 +50,31 @@
             updateFields();
         };
     </script>
+    <script>
+    function deleteEntry(id, table) {
+        if(confirm('Êtes-vous sûr de vouloir supprimer cette entrée ?')) {
+            // Requête AJAX pour la suppression
+            fetch('', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `action=delete&id=${id}&table=${table}`
+            })
+            .then(response => response.text()) // Recevez la réponse en tant que texte
+            .then(text => {
+                const element = document.querySelector('tr[data-id="' + id + '"]');
+                if (element) {
+                    element.remove();
+                } else {
+                    alert('Élément non trouvé dans le tableau.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    }
+    </script>
+
 </body>
 </html>
 <?php
