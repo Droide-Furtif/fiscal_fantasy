@@ -1,8 +1,10 @@
 <?php
 include(__DIR__ . "/../Models/compte.php");
-include(__DIR__ . "/../Models/user.php");
-include(__DIR__ . "/../Models/db_connection.php");
 include(__DIR__ . "/../Controllers/convert.php");
+
+# Messages d'erreurs activés, à enlever à la fin
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
@@ -17,7 +19,7 @@ $db = connection();
 $user = getUser($db, $_SESSION['user_email']);
 
 if (isset($_POST['accName'], $_POST['accType'], $_POST['devise'])) {
-  
+
   $accName = $_POST['accName'];
   $accType = $_POST['accType'];
   $devise = $_POST['devise'];

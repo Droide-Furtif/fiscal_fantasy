@@ -4,19 +4,20 @@
       $request = "CREATE TABLE IF NOT EXISTS `fiscal_fantasybdd`.`compte` (`id` INT NOT NULL AUTO_INCREMENT , `name` TEXT NOT NULL ,`type` INT NOT NULL , `devise` INT NOT NULL , `capital` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB";
       return mysqli_query($db, $request);
   }
- 
+
   /*
   function getAccounts($db, $user)
   {
       $request = "SELECT * FROM `compte` WHERE `email` = '" . $email . "'";
       return mysqli_fetch_array(mysqli_query($db, $request));
   }*/
-  
+
   function registerAccount($db, $user, $name, $type, $devise) {
     // Première requête pour insérer le nouveau compte
-    $request = "INSERT INTO `compte` (`name`, `type`, `devise`) VALUES (?, ?, ?)";
+    $capital = 0;
+    $request = "INSERT INTO `compte` (`name`, `type`, `devise`, `capital`) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($db, $request);
-    mysqli_stmt_bind_param($stmt, "sss", $name, $type, $devise);
+    mysqli_stmt_bind_param($stmt, "sssi", $name, $type, $devise, $capital);
 
     // Exécuter la requête d'insertion du compte
     if (mysqli_stmt_execute($stmt)) {

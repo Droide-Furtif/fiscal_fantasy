@@ -9,7 +9,7 @@
 <body>
   <br>
   <a href="#" id="showElementsBtn" class="button">Ajouter un compte</a><br>
-
+<!-- formulaire de création d'un compte -->
   <div id="elementsToDisplay" style="display: none;">
     <form method="post" action="">
       <input type="text" name="accName" required></input>

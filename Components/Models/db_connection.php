@@ -1,6 +1,6 @@
 <?php
 function connection() {
-  $host = 'localhost'; 
+  $host = 'localhost';
   $dbname = 'fiscal_fantasybdd';
   $dbusername = 'root';
   $password = '';
