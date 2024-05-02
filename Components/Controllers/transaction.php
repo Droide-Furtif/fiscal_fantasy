@@ -1,9 +1,6 @@
 <?php
 include(__DIR__ . "/../Models/compte.php");
-include(__DIR__ . "/../Models/user.php");
-include(__DIR__ . "/../Models/db_connection.php");
 include(__DIR__ . "/../Models/transaction.php");
-include(__DIR__ . "/../Controllers/convert.php");
 
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
@@ -37,6 +34,10 @@ if (isset($_POST['accountName'], $_POST['amount'], $_POST['date'], $_POST['incom
   }
 
   updateAccountAndAddTransaction($db, $user, $accName, $amount, $date, $note);
+}
+function getAllTransactions() {
+  global $db;
+  return getAllUserTransactions($db, $_SESSION['user_email']);
 }
 
 ?>

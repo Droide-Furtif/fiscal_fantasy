@@ -2,6 +2,7 @@
 <head><title>Log-in</title>
 </head>
 <body>
+  <!-- connection -->
   <div class="Libelle">
     <h1>Connectez vous :</h1>
   </div>

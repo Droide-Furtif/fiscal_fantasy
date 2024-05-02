@@ -15,6 +15,7 @@
             <div class="container-fluid" id="containerNavbar">
                 <div class="row" >
                     <!-- navbar -->
+                    <!-- si utilisateur non connecté -->
                     <div class="col-2" id="navbarVertical" >
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <?php if (!isset($_SESSION['user_id'])): ?>
@@ -22,17 +23,18 @@
                             <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/login.php') echo 'class="active"'; ?>class="nav-link" id="v-pills-Accueil-tab" data-toggle="pill" href="/fiscal_fantasy/login.php" role="tab" aria-controls="v-pills-messages" aria-selected="false">Connexion</a>
                             <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/signup.php') echo 'class="active"'; ?>class="nav-link" id="v-pills-Accueil-tab" data-toggle="pill" href="/fiscal_fantasy/signup.php" role="tab" aria-controls="v-pills-messages" aria-selected="false">Inscription</a>
                             <?php endif; ?>
-
+                    <!-- si utilisateur connecté -->
                             <?php if (isset($_SESSION['user_id'])): ?> 
                             <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/dashboard.php') echo 'class="active"' ?>class="nav-link" id="v-pills-Accueil-tab" data-toggle="pill" href="/fiscal_fantasy/dashboard.php" role="tab" aria-controls="v-pills-Accueil" aria-selected="true">Accueil</a>
                             <a class="nav-link" id="v-pills-Porte-feuille-tab" data-toggle="pill" href='/fiscal_fantasy/portfolios.php' role="tab" aria-controls="v-pills-messages" aria-selected="false">Comptes</a>
-                            <a class="nav-link" id="v-pills-Porte-feuille-tab" data-toggle="pill" href='/fiscal_fantasy/portfolios.php' role="tab" aria-controls="v-pills-messages" aria-selected="false">Groupes</a>
+                            <a class="nav-link" id="v-pills-Porte-feuille-tab" data-toggle="pill" href='/fiscal_fantasy/transaction.php' role="tab" aria-controls="v-pills-messages" aria-selected="false">Transaction</a>
+                            
                             <a class="nav-link" id="v-pills-Porte-feuille-tab" data-toggle="pill" href='/fiscal_fantasy/Components/Controllers/logout.php' role="tab" aria-controls="v-pills-messages" aria-selected="false">Déconnexion</a>
                             <?php endif; ?>
                         </div>
 
                         <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-Accueil" role="tabpanel" aria-labelledby="v-pills-Accueil-tab">...</div>
+                            <div class="tab-pane fade" id="v-pills-Accueil" role="tabpanel" aria-labelledby="v-pills-Accueil-tab">...</div>
                             <div class="tab-pane fade" id="v-pills-Porte-feuille" role="tabpanel" aria-labelledby="v-pills-Porte-feuille-tab">...</div>
                             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
                             <div class="tab-pane fade" id="v-pills-Paramètre" role="tabpanel" aria-labelledby="v-pills-Paramètre-tab">...</div>
@@ -48,7 +50,8 @@
                         <div class="containerCentral">
                             <?php 
                                 $currentPage = isset($currentPage) ? $currentPage : '';
-
+                            // depuis la base de chaque page
+                            // selon son currentPage
                                 $pages = [
                                     'accueilUnlogged' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/accueilUnlogged.php",
                                     'dashboard' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/dashboard.php",
@@ -56,13 +59,14 @@
                                     'signup' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/signup.php",
                                     'portfolios' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/portfolios.php",
                                     'admin' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/admin.php",
+                                    'transaction' => "C:/xampp/htdocs/fiscal_fantasy/Components/Views/transaction.php"
                                 ];
 
                                 if (array_key_exists($currentPage, $pages)){
                                     include $pages[$currentPage];
                                 }
                                 else{
-                                    include "C:/xampp/htdocs/fiscal_fantasy/Components/Views/errorPage.php";
+                                    echo '<meta http-equiv="refresh" content="0;url=errorPage.php">';
                                 }
 
                             ?>
@@ -80,23 +84,6 @@
 
         body{
             font-family: Hind Siliguri;
-        }
-
-        header{
-            display: flex;
-            justify-content: space-between;
-            align-items: center; 
-            padding: 10px; 
-        }
-
-        header svg{
-            display:flex;
-            justify-content:right;
-        }    
-        
-        svg{
-            width:24px;
-            height:24px;
         }
 
     /* id */    
@@ -118,20 +105,22 @@
         }
 
         #navbarVertical {
-        background-color: #40852F;
-        color: white;
-        font-size: 20px;
-        text-align: center;
-        height: 90vh;
-        display: flex;
-        flex-direction: column;
-        width:200px;
-        z-index: 1;
+            position: fixed;
+            top: 20vh; 
+            left: 0;
+            width: 15%; 
+            height: 80vh; 
+            background-color: #40852F;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
         }
         .navbar {
                 height: 100%;
                 flex-direction: column;
-                position: fixed;
                 top: 0;
                 left: 0;
                 z-index: 1;
@@ -233,22 +222,16 @@
         }
             
         .containerCentral {
-            width: 100%;
+            margin-top: 20vh; /* Marge équivalente à la hauteur du header */
+            margin-left: 20%; 
+            width:90%; /* 80% de la largeur de l'écran */
+            height: calc(100vh - 20vh); 
             background-color: #F9F9F9;
             border-radius: 10px;
             flex-grow: 1;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
-            flex-direction: column; 
-            margin-left: -20px;
-            margin-bottom: 143px;
+            flex-direction: column;
         }
-
-
 </style>
-<?php
-  include(__DIR__ . "/../Controllers/landing.php");
-?>
-
-

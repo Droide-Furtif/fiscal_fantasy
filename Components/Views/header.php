@@ -3,8 +3,10 @@
     include(__DIR__ . "/../Models/user.php");
     include(__DIR__ . "/../Models/db_connection.php");
     $db = connection();
+    $isAdmin = false;
     if (isset($_SESSION['user_email'])) {
     $user = getUser($db, $_SESSION['user_email']);}
+    $isAdmin = isAdmin($db, $_SESSION['user_email']);
 ?>
 <html>    
     <head>
@@ -20,6 +22,8 @@
 
 <section>
     <header>
+        <!-- si l'utilisateur est connecté -->
+        <!-- photo de profil -->
         <?php if (isset($_SESSION['user_id'])): ?> 
             <a href="#" class="totalHeader" id="openModal">
                 <div class="containerImage">
@@ -43,6 +47,7 @@
                     </svg>
                 </a>
             </div>
+            <!-- modal de la photo de profil -->
             <div id="myModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
@@ -65,15 +70,20 @@
                     </div>
                 </div>
             </div>
+            <!-- modal des settings -->
             <div id="settingsModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
+                    <h1 class="titre" id="param">Paramètres</h1>
+                    <?php if ($isAdmin): ?>
+                        <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/admin.php') echo 'class="active"'; ?> class="panelAdmin" href='/fiscal_fantasy/admin.php'>Accéder au panel administrateur</a>
+                    <?php endif; ?>
                     <p>Settings à venir..</p>
-                    <a href="admin.php">Accéder au panel administrateur</a>
                 </div>
             </div>
         <?php endif ?>
             
+        <!-- si l'utilisateur n'est pas connecté -->
         <?php if (!isset($_SESSION['user_id'])):?>
             <div class="texteHeaderUnlog" style="text-align: center; color:#40852F;">
                 <h1>Fiscal Fantasy</h1>    
@@ -129,16 +139,23 @@
     /* balises */
 
     body{
-            overflow: hidden;
+            overflow: auto;
             font-family: Hind Siliguri;
         }
 
-        header{
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20vh; 
+            background-color:white;
+            color: #40852F;
             display: flex;
             justify-content: space-between;
-            align-items: center; 
-            padding: 10px; 
-            text-align: center;
+            align-items: center;
+            padding: 10px;
+            z-index: 2; 
         }
 
         header svg{
@@ -216,10 +233,10 @@
                 text-decoration: none;
                 transform: scale(1.2);
             }
+            
     /* modal */
         .modal {
                 display: none;  
-                position: fixed;
                 z-index: 9999;
                 top: 0;
                 left: 0;
@@ -240,6 +257,8 @@
                 height: 97vh;
                 max-width: 700px;
                 margin: 10px auto;
+                align-items:center;
+
             }
 
             .close {
@@ -255,6 +274,7 @@
                 text-decoration: none;
                 cursor: pointer;
             }
+        /* modal pdp */
         .titre{
             display:flex;
             justify-content:center;
@@ -282,6 +302,28 @@
         .line{
             border: 0.5px solid #adbca9;
             margin-top : 10px;
+        }
+        /* modal settings */
+        .panelAdmin{
+            text-decoration:none;
+            text-align:center;
+            background-color:#40852F;
+            border: 2px solid #40852F;
+            color:white;
+            border-radius:10px;
+            height:50px;
+            width:200px;
+            display:flex;
+            justify-content:center;
+            align-items: center; /* Centrage vertical */
+            margin: 0 auto; /* Centrage horizontal */
+            margin-bottom:60px;
+        }
+        .panelAdmin:hover{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        #param{
+            padding-bottom:70px;
         }
 
 </style>

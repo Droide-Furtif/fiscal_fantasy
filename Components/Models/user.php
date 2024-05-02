@@ -33,4 +33,16 @@
 
       return $liste;
   }
-  
+
+  function isAdmin($db, $email) {
+    $query = $db->prepare("SELECT isAdmin FROM user WHERE email = ?");
+    
+    $query->bind_param("s", $email);
+    
+    $query->execute();
+    
+    $result = $query->get_result();
+    $user = $result->fetch_assoc();
+    
+    return $user ? $user['isAdmin'] : false;
+  }
