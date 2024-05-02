@@ -19,8 +19,34 @@
     <a href="#" id="boutonDepense" class="button">Ajouter une dépense</a>
     <br><br>
   </div>
+  <?php
+    $transactions = getAllTransactions();
+  ?>
 
-<!--   modal pour ajouter un revenu  -->
+  <!-- Affichage des données dans un tableau -->
+  <table >
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Montant</th>
+              <th>Date</th>
+              <th>Note</th>
+          </tr>
+      </thead>
+      <tbody>
+          <?php foreach ($transactions as $transaction): ?>
+              <tr>
+                  <td><?php echo $transaction['id']; ?></td>
+                  <td><?php echo $transaction['amount']; ?></td>
+                  <td><?php echo $transaction['date']; ?></td>
+                  <td><?php echo $transaction['note']; ?></td>
+              </tr>
+          <?php endforeach; ?>
+      </tbody>
+  </table>
+
+
+  <!--   modal pour ajouter un revenu  -->
   <div id="modalRevenu" class="modalTr" style="display: none;">
     <div class="modalTr-content">
     <span class="close">&times;</span>
@@ -153,7 +179,6 @@
     display:flex;
     justify-content:space-evenly;
     align-items: center;
-    padding-top:25vh;
     padding-left:20vh;
   }
   .annuler{
@@ -196,7 +221,7 @@
     border-radius: 5px;
     cursor: pointer;
     width: 120px;
-    text-align: center;
+    text-align: center ; 
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     transition: all 0.7s ease;
   }
@@ -208,5 +233,11 @@
   #elementsToDisplayRevenu,
   #elementsToDisplayDepense {
     text-align: center;
+  }
+
+  table{
+    margin-top : 20px;
+    border: 2px solid #40852F;
+    border-radius:10px;
   }
   

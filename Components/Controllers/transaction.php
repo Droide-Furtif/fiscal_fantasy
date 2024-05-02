@@ -35,5 +35,9 @@ if (isset($_POST['accountName'], $_POST['amount'], $_POST['date'], $_POST['incom
 
   updateAccountAndAddTransaction($db, $user, $accName, $amount, $date, $note);
 }
+function getAllTransactions() {
+  global $db;
+  return getAllUserTransactions($db, $_SESSION['user_email']);
+}
 
 ?>

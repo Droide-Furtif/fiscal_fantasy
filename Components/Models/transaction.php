@@ -43,5 +43,31 @@ function updateAccountAndAddTransaction($db, $user, $accountName, $amount, $date
       return false;
   }
 }
+function getAllUserTransactions($db, $email) {
+    require_once __DIR__ . '/user.php';
+    require_once __DIR__ . '/compte.php';
+    $user = getUser($db, $email);
+    
+    $accounts = getUserAccounts($db, $user);
+  
+    $allTransactions = [];
+  
+    foreach ($accounts as $account) {
+        $accountId = $account['id'];
+  
+        $query = $db->prepare("SELECT * FROM transaction WHERE id_compte = ?");
+        $query->bind_param("i", $accountId);
+        $query->execute();
+        $result = $query->get_result();
+  
+        while ($transaction = $result->fetch_assoc()) {
+            $allTransactions[] = $transaction;
+        }
+  
+        $query->close();
+    }
+  
+    return $allTransactions;
+  }
 
 ?>

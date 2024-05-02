@@ -28,6 +28,7 @@
                             <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/dashboard.php') echo 'class="active"' ?>class="nav-link" id="v-pills-Accueil-tab" data-toggle="pill" href="/fiscal_fantasy/dashboard.php" role="tab" aria-controls="v-pills-Accueil" aria-selected="true">Accueil</a>
                             <a class="nav-link" id="v-pills-Porte-feuille-tab" data-toggle="pill" href='/fiscal_fantasy/portfolios.php' role="tab" aria-controls="v-pills-messages" aria-selected="false">Comptes</a>
                             <a class="nav-link" id="v-pills-Porte-feuille-tab" data-toggle="pill" href='/fiscal_fantasy/transaction.php' role="tab" aria-controls="v-pills-messages" aria-selected="false">Transaction</a>
+                            
                             <a class="nav-link" id="v-pills-Porte-feuille-tab" data-toggle="pill" href='/fiscal_fantasy/Components/Controllers/logout.php' role="tab" aria-controls="v-pills-messages" aria-selected="false">Déconnexion</a>
                             <?php endif; ?>
                         </div>

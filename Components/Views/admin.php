@@ -4,11 +4,9 @@
     <title>Panel Admin</title>
 </head>
 <body>
-    <p class="line"></p>
-    <h1 class="Admin">Administration</h1>
-    <p class="line"></p>
-    <form class="form" action="" method="post">
-        <label class="intTable" for="table">Choisissez une table:</label>
+    <form action="" method="post">
+        <input type="hidden" name="action" value="search">
+        <label for="table">Choisissez une table:</label>
 <!-- /!\ Les 'value' des options, dans l'html comme le js, DOIVENT correspondrent au nom du champ/table dans la bdd -->
         <select id="table" name="table" onchange="updateFields()">
             <option value="user">User</option>
@@ -25,6 +23,13 @@
         <input type="text" id="filter" name="filter">
 
         <input type="submit" value="Rechercher">
+    </form>
+
+    <br><br>
+    <form action="admin.php" method="post">
+      <label for="user_id">ID de l'utilisateur à promouvoir :</label>
+      <input type="text" id="user_id" name="user_id" required>
+      <button class="button" type="submit" name="make_admin">Promouvoir</button>
     </form>
 
     <div id="results">
@@ -52,6 +57,31 @@
             updateFields();
         };
     </script>
+    <script>
+    function deleteEntry(id, table) {
+        if(confirm('Êtes-vous sûr de vouloir supprimer cette entrée ?')) {
+            // Requête AJAX pour la suppression
+            fetch('', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `action=delete&id=${id}&table=${table}`
+            })
+            .then(response => response.text()) // Recevez la réponse en tant que texte
+            .then(text => {
+                const element = document.querySelector('tr[data-id="' + id + '"]');
+                if (element) {
+                    element.remove();
+                } else {
+                    alert('Élément non trouvé dans le tableau.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    }
+    </script>
+
 </body>
 </html>
 <style>
@@ -66,6 +96,10 @@
         border: 2px solid #40852F;
         border-radius: 10px;
     }
+    #user_id{
+        border: 2px solid #40852F;
+        border-radius: 10px;
+    }
     .form{
         display:flex;
         justify-content:center;
@@ -75,6 +109,22 @@
         justify-content:center;
         text-align:center;
         color: #40852F;
+    }
+    .button {
+    padding: 10px 15px;
+    background-color: #40852F;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 40px;
+    width: 130px;
+    text-align: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    transition: all 0.7s ease;
+    }
+    .button:hover{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 10px -18px inset;
     }
     
     .intTable{
