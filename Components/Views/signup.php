@@ -4,6 +4,7 @@
   <div class="Libellé">
     <h1>Inscrivez-vous :</h1>
   </div>
+  <!-- fromulaire d'inscription -->
   <div class="form">
     <form method="post" action="">
       <div class="row" id="userEmail">
@@ -30,14 +31,6 @@
           <br>
         </div>
       </div>
-      <div class="avatar-section">
-        <label>Choisissez un avatar :</label>
-        <div class="avatars">
-          <img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairBigHair&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=ShirtVNeck&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Pale'>
-          <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Blank&hairColor=Black&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=Hoodie&clotheColor=Red&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Twinkle&skinColor=Pale'>
-        </div>
-      </div>
-      <!-- Fin de la section avec une largeur maximale pour les avatars -->
       <input class="inputSubmit" type="submit" required></input>
     </form>
   </div>
@@ -102,21 +95,6 @@ include(__DIR__ . "/../Controllers/signup.php");
   .inputSubmit:hover{
     box-shadow: rgb(30, 30, 30, 0.5) 3px 3px 6px 0px inset, rgba(30, 30, 30, 0.5) -3px -3px 6px 1px inset;
   }
-  .avatar-section {
-  max-width: 200px; /* Définissez la largeur maximale selon vos besoins */
-  margin: 0 auto; /* Centre la section horizontalement */
-  text-align: center; /* Centre les éléments à l'intérieur de la section */
-}
-
-.avatars {
-  display: flex;
-  justify-content: center;
-}
-
-.avatars img {
-  max-width: 70%; /* Les avatars ne dépasseront pas la largeur de la section */
-  margin: 10px; /* Espacement entre les avatars */
-}
 
 </style>
 

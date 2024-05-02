@@ -4,10 +4,10 @@
     <title>Panel Admin</title>
 </head>
 <body>
-    <form action="" method="post">
-        <p class="line"></p>
-        <h1 class="Admin">Administration</h1>
-        <p class="line"></p>
+    <p class="line"></p>
+    <h1 class="Admin">Administration</h1>
+    <p class="line"></p>
+    <form class="form" action="" method="post">
         <label class="intTable" for="table">Choisissez une table:</label>
 <!-- /!\ Les 'value' des options, dans l'html comme le js, DOIVENT correspondrent au nom du champ/table dans la bdd -->
         <select id="table" name="table" onchange="updateFields()">
@@ -55,13 +55,10 @@
 </body>
 </html>
 <style>
-    .Admin{
-        display:flex;
-        justify-content:center;
-        text-align:center;
-        color: #40852F;
-    }
-    #filter{
+    #table{
+        border: 2px solid #40852F;
+        border-radius: 10px;
+    }#filter{
         border: 2px solid #40852F;
         border-radius: 10px;
     }
@@ -69,10 +66,17 @@
         border: 2px solid #40852F;
         border-radius: 10px;
     }
-    #table{
-        border: 2px solid #40852F;
-        border-radius: 10px;
+    .form{
+        display:flex;
+        justify-content:center;
     }
+    .Admin{
+        display:flex;
+        justify-content:center;
+        text-align:center;
+        color: #40852F;
+    }
+    
     .intTable{
 
     }
