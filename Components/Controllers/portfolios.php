@@ -1,6 +1,6 @@
 <?php
-include(__DIR__ . "/../Models/compte.php");
-include(__DIR__ . "/../Controllers/convert.php");
+require_once __DIR__ . "/../Models/compte.php";
+require_once __DIR__ . "/../Controllers/convert.php";
 
 # Messages d'erreurs activés, à enlever à la fin
 error_reporting(E_ALL);

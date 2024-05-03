@@ -1,9 +1,9 @@
 <?php
   // utiliser dans le container central de View/portefolios
   $currentPage = 'portfolios';
-  include "Components/Views/header.php";
-  include "Components/Views/navbar.php";
-  include "Components/Controllers/portfolios.php";
+  require_once "Components/Views/header.php";
+  require_once "Components/Views/navbar.php";
+  require_once "Components/Controllers/portfolios.php";
 
 ?>
   

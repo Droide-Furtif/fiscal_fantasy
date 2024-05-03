@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../Controllers/portfolios.php"
 ?>
 <html>
 <head>
@@ -34,7 +35,7 @@
 </body>
 <script>
     document.getElementById('showElementsBtn').addEventListener('click', function(event) {
-        event.preventDefault(); // Empêche le navigateur de suivre le lien
+        event.preventDefault();
         var elements = document.getElementById('elementsToDisplay');
         if (elements.style.display === 'none') {
             elements.style.display = 'block';

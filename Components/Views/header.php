@@ -1,7 +1,7 @@
 <?php 
     session_start();
-    include(__DIR__ . "/../Models/user.php");
-    include(__DIR__ . "/../Models/db_connection.php");
+    require_once __DIR__ . "/../Models/user.php";
+    require_once __DIR__ . "/../Models/db_connection.php";
     $db = connection();
     if (isset($_SESSION['user_email'])) {
     $user = getUser($db, $_SESSION['user_email']);}
