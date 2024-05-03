@@ -49,7 +49,6 @@
   <!--   modal pour ajouter un revenu  -->
   <div id="modalRevenu" class="modalTr" style="display: none;">
     <div class="modalTr-content">
-    <span class="close">&times;</span>
       <div id="elementsToDisplayRevenu">
         <h1 class="titre" >Revenu</h1>
         <br>
@@ -86,7 +85,6 @@
 
   <div id="modalDepense" class="modalTr" style="display: none;">
     <div class="modalTr-content">
-    <span class="close">&times;</span>
       <div id="elementsToDisplayDepense">
       <h1 class="titre" >Dépense</h1>
       <br>
