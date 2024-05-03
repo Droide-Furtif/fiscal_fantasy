@@ -1,5 +1,4 @@
 <?php
-  include "Components/Controllers/portfolios.php";
 ?>
 <html>
 <head>
