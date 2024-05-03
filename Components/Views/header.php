@@ -3,8 +3,10 @@
     require_once __DIR__ . "/../Models/user.php";
     require_once __DIR__ . "/../Models/db_connection.php";
     $db = connection();
+    $isAdmin = false;
     if (isset($_SESSION['user_email'])) {
     $user = getUser($db, $_SESSION['user_email']);}
+    $isAdmin = isAdmin($db, $_SESSION['user_email']);
 ?>
 <html>    
     <head>
@@ -73,7 +75,9 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h1 class="titre" id="param">Paramètres</h1>
-                    <a class="panelAdmin"  href="admin.php">Accéder au panel administrateur</a>
+                    <?php if ($isAdmin): ?>
+                        <a <?php if ($_SERVER['REQUEST_URI'] == '/fiscal_fantasy/admin.php') echo 'class="active"'; ?> class="panelAdmin" href='/fiscal_fantasy/admin.php'>Accéder au panel administrateur</a>
+                    <?php endif; ?>
                     <p>Settings à venir..</p>
                 </div>
             </div>
